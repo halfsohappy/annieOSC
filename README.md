@@ -1,121 +1,216 @@
-# oscl gooey
+# annieOSC
 
-**A lightweight, fully featured GUI for sending, monitoring, and receiving [Open Sound Control (OSC)](https://opensoundcontrol.stanford.edu) messages.** Built with Python, designed for speed and simplicity, and optimized for [TheaterGWD / annieData](https://github.com/halfsohappy/TheaterGWD) sensor devices.
+**A lightweight, fully featured GUI for sending, monitoring, and receiving [Open Sound Control (OSC)](https://opensoundcontrol.stanford.edu) messages.**
 
-Runs in your browser. One command to start. No complicated setup.
+Built with Python. Runs in your browser. One command to start.  
+Optimized for [TheaterGWD / annieData](https://github.com/halfsohappy/TheaterGWD) sensor devices.
 
 ---
 
 ## Features
 
-- **Send** — Compose and send OSC messages with typed arguments (int, float, string). Send once or on a repeating interval. Send batch messages from JSON.
-- **Receive** — Listen on any UDP port for incoming OSC messages. Filter by address pattern (include or exclude). Real-time display with auto-scroll.
-- **Bridge** — Forward OSC messages between ports/hosts with optional filtering. Great for routing sensor data to multiple destinations.
-- **TheaterGWD Presets** — One-click commands for annieData devices: blackout, restore, list patches, create messages, start/stop patches, save/load config, and more.
-- **Monitor** — Full message log with live message rate, filtering, and color-coded direction tags (send/recv/bridge).
-- **Real-time** — WebSocket-powered live updates. Messages appear instantly as they arrive.
-- **Responsive** — Works on desktop, tablet, and mobile browsers.
+| Feature | Description |
+|---------|-------------|
+| **Send** | Compose and fire OSC messages with typed arguments (int, float, string). Send once or loop at an interval. Batch-send from JSON. |
+| **Receive** | Listen on any UDP port. Filter by address pattern (include or exclude). Real-time log with auto-scroll. |
+| **Bridge** | Forward messages between ports/hosts with optional filtering — great for routing sensor data to multiple destinations. |
+| **TheaterGWD Presets** | One-click commands for annieData devices: blackout, restore, patch start/stop, create message, save/load config, and more. |
+| **Monitor** | Unified message log across all directions with live message rate, text filter, and color-coded tags. |
+| **Real-time** | WebSocket-powered — messages appear instantly as they arrive. |
+| **Responsive** | Works on desktop, tablet, and mobile. |
+| **Standalone** | Pure Python — no build tools, no npm, no Electron. Just `pip install` and run. |
 
 ---
 
 ## Quick Start
 
-### Prerequisites
-
-- **Python 3.8+** — [Download Python](https://www.python.org/downloads/)
-  - macOS: `brew install python` or pre-installed on most versions
-  - Ubuntu/Debian: `sudo apt install python3 python3-pip python3-venv`
-  - Windows: Download from [python.org](https://www.python.org/downloads/) (check "Add to PATH" during install)
-
-That's it. Python is the only requirement.
-
-### Install & Run (3 steps)
-
-**Step 1: Clone the repository**
-
 ```bash
 git clone https://github.com/halfsohappy/oscl_gooey.git
 cd oscl_gooey
-```
-
-**Step 2: Install dependencies**
-
-```bash
 pip install -r requirements.txt
-```
-
-Or, if you prefer a virtual environment (recommended):
-
-```bash
-python3 -m venv venv
-source venv/bin/activate        # macOS/Linux
-# venv\Scripts\activate         # Windows
-pip install -r requirements.txt
-```
-
-**Step 3: Run**
-
-```bash
 python run.py
 ```
 
-The GUI opens automatically in your browser at **http://127.0.0.1:5000**.
+The GUI opens automatically at **http://127.0.0.1:5000**.
 
 ---
 
-## Install Guide (Detailed)
+## Full Install Guide
 
-### macOS
+### What You Need
+
+- **Python 3.8 or newer** — that's it!
+
+Check if you already have it:
 
 ```bash
-# Install Python if not already installed
+python3 --version
+```
+
+If not, install it:
+
+| Platform | Install Command |
+|----------|----------------|
+| **macOS** | `brew install python` or download from [python.org](https://www.python.org/downloads/) |
+| **Ubuntu / Debian / Raspberry Pi** | `sudo apt update && sudo apt install python3 python3-pip python3-venv` |
+| **Fedora / RHEL** | `sudo dnf install python3 python3-pip` |
+| **Windows** | Download from [python.org](https://www.python.org/downloads/) — **check "Add Python to PATH"** during install |
+
+---
+
+### Install on macOS
+
+```bash
+# 1. Install Python (skip if you already have it)
 brew install python
 
-# Clone and set up
+# 2. Clone the project
 git clone https://github.com/halfsohappy/oscl_gooey.git
 cd oscl_gooey
+
+# 3. Create a virtual environment (recommended)
 python3 -m venv venv
 source venv/bin/activate
+
+# 4. Install dependencies
 pip install -r requirements.txt
 
-# Run
+# 5. Run
 python run.py
 ```
 
-### Ubuntu / Debian / Raspberry Pi
+### Install on Ubuntu / Debian / Raspberry Pi
 
 ```bash
-# Install Python and pip
+# 1. Install Python and pip
 sudo apt update
 sudo apt install python3 python3-pip python3-venv
 
-# Clone and set up
+# 2. Clone the project
 git clone https://github.com/halfsohappy/oscl_gooey.git
 cd oscl_gooey
+
+# 3. Create a virtual environment (recommended)
 python3 -m venv venv
 source venv/bin/activate
+
+# 4. Install dependencies
 pip install -r requirements.txt
 
-# Run
+# 5. Run
 python run.py
 ```
 
-### Windows
+### Install on Windows
 
 1. Download and install Python from [python.org](https://www.python.org/downloads/)
-   - **Check "Add Python to PATH"** during installation
-2. Open Command Prompt or PowerShell:
+   - ✅ **Check "Add Python to PATH"** during installation
+2. Open **Command Prompt** or **PowerShell**:
 
 ```powershell
+# 1. Clone the project
 git clone https://github.com/halfsohappy/oscl_gooey.git
 cd oscl_gooey
+
+# 2. Create a virtual environment (recommended)
 python -m venv venv
 venv\Scripts\activate
+
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# 4. Run
+python run.py
+```
+
+---
+
+### Running Standalone (No Virtual Environment)
+
+If you prefer a simpler setup without a virtual environment:
+
+```bash
+git clone https://github.com/halfsohappy/oscl_gooey.git
+cd oscl_gooey
 pip install -r requirements.txt
 python run.py
 ```
 
-### Command-Line Options
+That's 4 commands. You're done.
+
+---
+
+### Running as a Background Service
+
+To run annieOSC as a persistent background service (e.g., on a Raspberry Pi or show control machine):
+
+**Linux / macOS:**
+```bash
+# Run in the background, accessible from any device on your network
+nohup python run.py --host 0.0.0.0 --no-browser > annieosc.log 2>&1 &
+
+# View the log
+tail -f annieosc.log
+
+# Stop it
+# Find the process ID and kill it:
+ps aux | grep run.py
+kill <PID>
+```
+
+**Using systemd (Linux — auto-start on boot):**
+
+Create `/etc/systemd/system/annieosc.service`:
+```ini
+[Unit]
+Description=annieOSC — OSC Control GUI
+After=network.target
+
+[Service]
+Type=simple
+User=your_username
+WorkingDirectory=/path/to/oscl_gooey
+ExecStart=/path/to/oscl_gooey/venv/bin/python run.py --host 0.0.0.0 --no-browser
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Then:
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable annieosc
+sudo systemctl start annieosc
+sudo systemctl status annieosc
+```
+
+---
+
+### Building a Standalone Executable (Optional)
+
+You can package annieOSC into a single executable file using [PyInstaller](https://pyinstaller.org/) — no Python installation required on the target machine.
+
+```bash
+# Install PyInstaller
+pip install pyinstaller
+
+# Build the executable
+pyinstaller --onefile \
+  --add-data "app/templates:app/templates" \
+  --add-data "app/static:app/static" \
+  --name annieOSC \
+  run.py
+
+# The executable is at dist/annieOSC (or dist/annieOSC.exe on Windows)
+./dist/annieOSC
+```
+
+The resulting binary is fully standalone — copy it to any machine and run.
+
+---
+
+## Command-Line Options
 
 ```
 python run.py [OPTIONS]
@@ -130,14 +225,17 @@ Options:
 **Examples:**
 
 ```bash
+# Default — opens browser automatically
+python run.py
+
 # Use a different port
 python run.py --port 8080
 
 # Allow access from other devices on your network
 python run.py --host 0.0.0.0
 
-# Headless mode (no browser popup)
-python run.py --no-browser
+# Headless mode (no browser, great for servers)
+python run.py --host 0.0.0.0 --no-browser
 ```
 
 ---
@@ -152,16 +250,16 @@ Send individual OSC messages or batch messages from JSON.
 |-------|-------------|
 | **Host** | Target IP address (e.g., `127.0.0.1`, `192.168.1.50`) |
 | **Port** | Target UDP port (1–65535) |
-| **OSC Address** | Message address path, must start with `/` (e.g., `/sensor/x`) |
-| **Arguments** | Space-separated values — integers (`42`), floats (`3.14`), strings (`hello`) |
+| **OSC Address** | Message path — must start with `/` (e.g., `/sensor/x`) |
+| **Arguments** | Space-separated values: integers (`42`), floats (`3.14`), strings (`hello`) |
 | **Interval** | Repeat interval in milliseconds for continuous sending |
 
 **Buttons:**
-- **Send Once** — Send a single message
-- **Start Repeat** — Send the message continuously at the specified interval
-- **Stop** — Stop repeated sending
+- **Send Once** — fire a single message
+- **Start Repeat** — send continuously at the specified interval
+- **Stop** — stop repeated sending
 
-**JSON Batch Send** — Paste a JSON array of messages:
+**JSON Batch Send** — paste a JSON array:
 ```json
 [
   { "address": "/light/dimmer", "args": [255] },
@@ -177,9 +275,9 @@ Listen for incoming OSC messages on a specified port.
 | Field | Description |
 |-------|-------------|
 | **Listen Port** | UDP port to listen on (default: 9000) |
-| **Filter** | Include filter: `sensor` shows only addresses containing "sensor". Exclude filter: `-debug` hides addresses containing "debug" |
+| **Filter** | `sensor` → show only matching addresses. `-debug` → hide matching addresses. |
 
-You can run multiple listeners on different ports simultaneously.
+Multiple listeners on different ports can run simultaneously.
 
 ### Bridge Tab
 
@@ -188,7 +286,7 @@ Forward OSC messages between endpoints with optional filtering.
 | Field | Description |
 |-------|-------------|
 | **Listen Port** | Port to receive messages on |
-| **Output Host** | Destination IP to forward messages to |
+| **Output Host** | Destination IP to forward to |
 | **Output Port** | Destination port |
 | **Filter** | Same include/exclude filtering as Receive |
 
@@ -197,48 +295,50 @@ Forward OSC messages between endpoints with optional filtering.
 Pre-configured controls for [annieData](https://github.com/halfsohappy/TheaterGWD) sensor devices.
 
 **Device Settings:**
-- **Device Host** — IP address of your annieData device
-- **Device Port** — OSC port (default: 8000)
-- **Device Name** — Device identifier used in OSC addresses (default: `bart`)
+| Field | Description |
+|-------|-------------|
+| **Device Host** | IP address of your annieData device |
+| **Device Port** | OSC port (default: 8000) |
+| **Device Name** | Identifier used in OSC addresses (default: `bart`) |
 
 **Quick Commands:**
-| Button | OSC Address | Description |
+| Button | OSC Address | What It Does |
 |--------|-------------|-------------|
 | ⬛ Blackout | `/annieData/{device}/blackout` | Stop all sensor output |
 | 🔆 Restore | `/annieData/{device}/restore` | Resume sensor output |
 | 💾 Save | `/annieData/{device}/save` | Save config to NVS |
 | 📂 Load | `/annieData/{device}/load` | Load config from NVS |
-| 📊 Status | `/annieData/{device}/status/config` | Request device status |
+| 📊 Status | `/annieData/{device}/status/config` | Request device config |
 | 🗑️ NVS Clear | `/annieData/{device}/nvs/clear` | Clear NVS storage |
 | 📋 Messages | `/annieData/{device}/list/msgs` | List configured messages |
 | 📋 Patches | `/annieData/{device}/list/patches` | List configured patches |
 | 📋 All | `/annieData/{device}/list/all` | List everything |
 
-**Patch Control** — Start/stop named patches (groups of sensor messages).
+**Patch Control** — start/stop named patches (groups of sensor messages).
 
-**Create Message** — Configure a sensor stream:
-- Choose a sensor value (accelX, accelY, accelZ, gyroX, gyroY, gyroZ, baro, eulerX, eulerY, eulerZ, etc.)
-- Set target IP, port, and OSC address for where the sensor data should be sent
+**Create Message** — configure a sensor data stream:
+- Choose a sensor value (`accelX`, `gyroY`, `baro`, `eulerZ`, etc.)
+- Set the target IP, port, and OSC address where data should be sent
 
-**Device Reply Listener** — Listen for `/reply/{device}/...` responses from the device.
+**Device Reply Listener** — listen for `/reply/{device}/...` responses.
 
 ### Monitor Tab
 
-Full message log for all directions (send, receive, bridge).
+Full message log across all directions (send/receive/bridge).
 
-- **Auto-scroll** — Keeps the log scrolled to the latest message
-- **Filter** — Real-time text filter on message addresses
-- **Stats** — Live message count and messages-per-second rate
-- **Clear** — Reset the log
+- **Auto-scroll** — keeps the log at the latest message
+- **Filter** — real-time text filter on message addresses
+- **Stats** — live message count and messages-per-second rate
+- **Clear** — reset the log
 
 ---
 
-## Architecture
+## Project Structure
 
 ```
-oscl_gooey/
+annieOSC/
 ├── run.py                  # Entry point — starts the web server
-├── requirements.txt        # Python dependencies
+├── requirements.txt        # Python dependencies (3 packages)
 ├── app/
 │   ├── __init__.py
 │   ├── main.py             # Flask routes, API endpoints, SocketIO events
@@ -247,20 +347,26 @@ oscl_gooey/
 │   │   └── index.html      # Single-page GUI
 │   └── static/
 │       ├── css/
-│       │   └── style.css   # Stylesheet (Annabel Portfolio design language)
+│       │   └── style.css   # Stylesheet (Annabel Portfolio design)
 │       └── js/
-│           └── app.js      # Frontend logic, WebSocket, UI interactions
-├── src/                    # Original Common Lisp CLI source (preserved)
-├── t/                      # Original CL tests (preserved)
-├── oscl.asd                # Original CL system definition (preserved)
-└── oscl.ros                # Original CL Roswell script (preserved)
+│           ├── app.js      # Frontend logic & WebSocket
+│           └── socket.io.min.js  # Bundled Socket.IO client
+├── LICENSE
+└── README.md
 ```
 
 **Tech Stack:**
-- **Backend:** Python 3 + Flask + Flask-SocketIO
-- **OSC Library:** python-osc (reliable, well-maintained)
-- **Real-time:** WebSocket via Socket.IO
-- **Frontend:** Vanilla HTML/CSS/JS (no build step, no npm)
+| Component | Technology |
+|-----------|-----------|
+| Backend | Python 3 + Flask |
+| Real-time | Flask-SocketIO (WebSocket) |
+| OSC | python-osc |
+| Frontend | Vanilla HTML / CSS / JS (no build step) |
+
+**Dependencies** (just 3 packages):
+- `flask` — web server
+- `flask-socketio` — WebSocket support
+- `python-osc` — OSC protocol
 
 ---
 
@@ -272,34 +378,29 @@ oscl_gooey/
 OSError: [Errno 98] Address already in use
 ```
 
-Another process is using the port. Either stop that process or use a different port:
+Another process is using that port. Use a different one:
 ```bash
-python run.py --port 8080          # Different web server port
+python run.py --port 8080
 ```
-
-For OSC listener port conflicts, stop the existing listener from the GUI before starting a new one on the same port.
 
 ### Can't receive messages from another device
 
-Make sure:
-1. Your firewall allows incoming UDP on the listen port
-2. The sending device is targeting your machine's IP (not `127.0.0.1` unless local)
-3. Run with `--host 0.0.0.0` if accessing the GUI from another device on your network
+1. Make sure your firewall allows incoming UDP on the listen port
+2. The sending device should target your machine's actual IP, not `127.0.0.1`
+3. Run with `--host 0.0.0.0` to accept connections from other devices
 
 ### Messages not showing up
 
 - Check that the listener is active (green dot in the Active Listeners list)
-- Check your filter — an active filter may be hiding messages
-- Make sure the sending device is targeting the correct IP and port
+- Check your filter — it might be hiding messages
+- Verify the sending device targets the correct IP and port
 
----
+### Browser doesn't open automatically
 
-## Original CLI Tool
-
-The original `oscl` command-line tool (Common Lisp) is preserved in the `src/` and `t/` directories. See the [original oscl documentation](https://github.com/ogrew/oscl) for CLI usage. The GUI does not depend on the CLI — it uses Python's `python-osc` library directly.
+Use the URL printed in the terminal, or run without `--no-browser`.
 
 ---
 
 ## License
 
-[MIT License](https://github.com/ogrew/oscl/blob/main/LICENSE)
+[MIT License](LICENSE)

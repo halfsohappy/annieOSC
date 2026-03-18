@@ -1,5 +1,5 @@
 /* ==============================================
-   oscl gooey — Frontend Application
+   annieOSC — Frontend Application
    Real-time OSC control via WebSocket + REST API
    ============================================== */
 

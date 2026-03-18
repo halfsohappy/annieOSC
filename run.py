@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Entry point for oscl gooey — run the web GUI server."""
+"""Entry point for annieOSC — run the web GUI server."""
 
 import argparse
 import sys
@@ -11,7 +11,7 @@ from app.main import create_app
 
 def main():
     parser = argparse.ArgumentParser(
-        description="oscl gooey — OSC Control GUI",
+        description="annieOSC — OSC Control GUI",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""\
 examples:
@@ -41,8 +41,8 @@ examples:
     app, socketio = create_app()
 
     url = f"http://{args.host}:{args.port}"
-    print(f"\n  oscl gooey — OSC Control GUI")
-    print(f"  ────────────────────────────")
+    print(f"\n  annieOSC — OSC Control GUI")
+    print(f"  ──────────────────────────")
     print(f"  Running at: {url}")
     if args.host == "0.0.0.0":
         print(f"  ⚠ Accessible from other devices on your network")

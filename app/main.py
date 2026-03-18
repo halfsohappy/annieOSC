@@ -9,7 +9,7 @@ from flask_socketio import SocketIO
 from .osc_handler import OSCEngine
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "oscl-gooey-secret"
+app.config["SECRET_KEY"] = "annieosc-secret"
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading")
 engine = OSCEngine(socketio)
 
